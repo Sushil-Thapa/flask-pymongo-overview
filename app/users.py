@@ -2,7 +2,7 @@
 
 import json
 from bson.json_util import dumps
-from flask import Flask, abort, request, jsonify
+from flask import Flask, abort, request, Response, jsonify
 from flask_cors import CORS
 from flask_pymongo import PyMongo
 
@@ -62,36 +62,22 @@ def fetch_users():
        Function to fetch the users.
        """
     try:
-        # Check if dictionary is not empty
-        if query_params:
+        # Fetch all the record(s)
+        records_fetched = collection.find()
 
-            # Try to convert the value to int
-            query = {k: int(v) if isinstance(v, str) and v.isdigit() else v for k, v in query_params.items()}
-
-            # Fetch all the record(s)
-            records_fetched = collection.find(query)
-
-            # Check if the records are found
-            if records_fetched.count() > 0:
-                # Prepare the response
-                return dumps(records_fetched)
-            else:
-                # No records are found
-                return "", 404
-
-        # If dictionary is empty
+        # Check if the records are found
+        if records_fetched.count() > 0:
+            # Prepare the response
+            records = dumps(records_fetched)
+            resp = Response(records, status=200, mimetype='application/json')
+            return resp
         else:
-            # Return all the records as query string parameters are not available
-            if collection.find().count > 0:
-                # Prepare response if the users are found
-                return dumps(collection.find())
-            else:
-                # Return empty array if no users are found
-                return jsonify([])
-    except:
+            # No records are found
+            return jsonify({"message":"No records are found"}), 404
+    except Exception as e:
+        print(str(e))
         # Error while trying to fetch the resource
-        # Add message for debugging purpose
-        return "", 500
+        return jsonify({"message":"Error while trying to fetch the resource"}), 500
 
 
 @app.route("/api/v1/users/<user_id>", methods=['POST'])
