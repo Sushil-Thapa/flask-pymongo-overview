@@ -2,25 +2,12 @@
 
 import json
 from bson.json_util import dumps
-from flask import Flask, abort, request, Response, jsonify
-from flask_cors import CORS
-from flask_pymongo import PyMongo
-
-
-app = Flask(__name__)
-
-# Load Config File for DB
-app.config.from_pyfile('config.cfg')
-CORS(app)
-mongo = PyMongo(app)
-
-# Select the database
-db = mongo.db
-# Select the collection
-collection = db.users
+from flask import abort, request, Response, jsonify
+from api import app, collection
 
 @app.route("/")
-def get_initial_response():
+@app.route("/index")  # Decorators as callbacks for requests
+def index():
     """Welcome message for the API."""
     # Message to the user
     message = {
@@ -41,7 +28,7 @@ def create_user():
        Function to create new users.
        """
     try:
-        # Create new users
+        # Create new user
         try:
             body = request.get_json()
         except:
