@@ -5,22 +5,6 @@ from bson.json_util import dumps
 from flask import abort, request, Response, jsonify
 from api import app, collection
 
-@app.route("/")
-@app.route("/index")  # Decorators as callbacks for requests
-def index():
-    """Welcome message for the API."""
-    # Message to the user
-    message = {
-        'api_version': 'v1.0',
-        'status': '200',
-        'message': 'Welcome to the Flask API'
-    }
-    # Making the message looks good
-    resp = jsonify(message)
-
-    # Returning the object
-    return resp
-
 
 @app.route("/api/v1/users", methods=['POST'])
 def create_user():
