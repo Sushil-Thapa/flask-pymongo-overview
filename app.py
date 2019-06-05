@@ -24,7 +24,11 @@ def init_app():
 
 
 def create_route(app):
-    app.add_url_rule(rule='/', view_func=get_initial_response, methods=['GET'])
+    """
+    Adds different rules to the urls 
+    """
+    app.add_url_rule(rule='/',
+                    view_func=get_initial_response, methods=['GET'])
     app.add_url_rule(rule='/api/v1/users',
                      view_func=create_user, methods=['POST'])
     app.add_url_rule(rule='/api/v1/users',
