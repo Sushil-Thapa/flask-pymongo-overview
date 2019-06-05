@@ -1,10 +1,15 @@
-### Designing RESTful API with Python-Flask and MongoDB
+## Designing RESTful API with Python-Flask and MongoDB
 
 This example project demonstrate how to design RESTful API with Python-Flask and
 MongoDB. This overview is a part of training program at Fusemachines.
 
-Cloning the repository
+### Assets
+1. [Presentation Slides](assets/Fusemachines%20Flask_Pymongo%20Training.pdf)
+2. [Presentation Document](PRESENTATION.md)
 
+
+### Installation
+##### Cloning the repository
 ```bash
 # Get the project code
 git clone https://github.com/Sushil-Thapa/flask-pymongo-overview.git
@@ -36,7 +41,7 @@ sudo service mongod start
 
 Change the `MONGO_DBNAME` in the config file according to the database name you are using.
 
-##### Start the application
+### Start the application
 
 ```bash
 python run.py
