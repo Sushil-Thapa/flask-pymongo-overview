@@ -25,7 +25,7 @@ def init_app():
 
 def create_route(app):
     """
-    Adds different rules to the urls 
+    Adds different rules to the urls
     """
     app.add_url_rule(rule='/',
                     view_func=get_initial_response, methods=['GET'])
