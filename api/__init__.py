@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_pymongo import PyMongo
 
+# Create Flask application
 app = Flask(__name__)
 
 # Load Config File for DB

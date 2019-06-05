@@ -26,7 +26,7 @@ def index():
 def create_user():
     """
        Function to create new users.
-       """
+    """
     try:
         # Create new user
         try:
