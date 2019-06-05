@@ -4,7 +4,7 @@ This example project demonstrate how to design RESTful API with Python-Flask and
 MongoDB. This overview is a part of training program at Fusemachines.
 
 ### Assets
-1. [Presentation Slides](assets/Fusemachines%20Flask_Pymongo%20Training.pdf)
+1. [Presentation Slides](https://docs.google.com/presentation/d/1uxqeL11U1VsnmMV1ZwcdyGUgzSSDhaUuJs38otCtIvE/edit?usp=sharing)|[PDF](assets/Fusemachines%20Flask_Pymongo%20Training.pdf)
 2. [Presentation Document](PRESENTATION.md)
 
 
