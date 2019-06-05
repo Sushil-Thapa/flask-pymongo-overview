@@ -3,7 +3,7 @@
 from flask import Flask, Response, jsonify
 from flask_cors import CORS
 from flask_pymongo import PyMongo
-from services.user import create_user, fetch_users, update_user, remove_user
+from services.user import create_user, fetch_users, fetch_user, update_user, remove_user
 from settings import shared_components
 
 
@@ -29,8 +29,10 @@ def create_route(app):
                      view_func=create_user, methods=['POST'])
     app.add_url_rule(rule='/api/v1/users',
                      view_func=fetch_users, methods=['GET'])
+    app.add_url_rule(rule='/api/v1/users/<user_id>',
+                     view_func=fetch_user, methods=['GET'])
     app.add_url_rule("/api/v1/users/<user_id>",
-                     view_func=update_user, methods=['POST'])
+                     view_func=update_user, methods=['PUT'])
     app.add_url_rule("/api/v1/users/<user_id>",
                      view_func=remove_user, methods=['DELETE'])
     return app

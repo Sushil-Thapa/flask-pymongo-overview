@@ -41,6 +41,8 @@ Change the `DBNAME` in the config file according to the database name you are us
 
 ```bash
 python run.py
+or
+gunicorn -b :5000 -w 2 -t 120 app:app
 ```
 
 Once the application is started, go to [localhost](http://localhost:5000/) on Postman and explore the APIs.

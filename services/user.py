@@ -35,7 +35,7 @@ def fetch_users():
     collection = db.user
     try:
         # Fetch all the record(s)
-        records_fetched = collection.find()
+        records_fetched = collection.find({},{'_id':0})
 
         # Check if the records are found
         if records_fetched.count() > 0:
@@ -51,6 +51,30 @@ def fetch_users():
         # Error while trying to fetch the resource
         return Response("Error while trying to fetch the resource", status=500)
 
+def fetch_user(user_id):
+    """
+       Function to fetch the users.
+       """
+    db = shared_components["db"]
+    collection = db.user
+    try:
+        # Fetch all the record(s)
+        # import pdb; pdb.set_trace()
+        records_fetched = collection.find_one({"id": user_id},{'_id':0})
+
+        # Check if the records are found
+        if records_fetched:
+            # Prepare the response
+            records = dumps(records_fetched)
+            resp = Response(records, status=200, mimetype='application/json')
+            return resp
+        else:
+            # No records are found
+            return Response("No records are found", status=404)
+    except Exception as e:
+        print("Exception: {}".format(e))
+        # Error while trying to fetch the resource
+        return Response("Error while trying to fetch the resource", status=500)
 
 def update_user(user_id):
     """
@@ -68,7 +92,7 @@ def update_user(user_id):
 
         # Updating the user
         records_updated = collection.update_one(
-            {"id": int(user_id)}, {"$set": body})
+            {"id": user_id}, {"$set": body})
 
         # Check if resource is updated
         if records_updated.modified_count > 0:
@@ -93,7 +117,7 @@ def remove_user(user_id):
     collection = db.user
     try:
         # Delete the user
-        delete_user = collection.delete_one({"id": int(user_id)})
+        delete_user = collection.delete_one({"id": user_id})
 
         if delete_user.deleted_count > 0:
             # Prepare the response
