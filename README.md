@@ -51,4 +51,13 @@ or
 FLASK_APP=app.py flask run
 ```
 
-Once the application is started, go to [localhost](http://localhost:5000/) on Postman and explore the APIs.
+Once the application is started, go to [localhost](http://localhost:5000/) on Postman and explore the APIs. 
+Sample postman collection schema (version 2.1) is [uploaded here.](data/Fuse-Flask-Training.postman_collection.json)
+
+
+### Using Docker container
+- Build container 
+  `docker build -t my_docker:latest .`
+
+- Run container 
+  `docker run -ti -p 8080:8080 my_docker:latest `

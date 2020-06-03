@@ -59,7 +59,6 @@ def fetch_user(user_id):
     collection = db.user
     try:
         # Fetch all the record(s)
-        # import pdb; pdb.set_trace()
         records_fetched = collection.find_one({"id": user_id},{'_id':0})
 
         # Check if the records are found

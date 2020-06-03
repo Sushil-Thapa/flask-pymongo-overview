@@ -16,7 +16,7 @@ We'll go through basics of building backend server with flask. We wont go too mu
 - a software architectural style that defines a set of constraints to be used for creating Web services.
 #### Characteristics of REST service
 1.  **Client-server based architecture :**_Client/server architecture is a computing model in which the server hosts, delivers and manages most of the resources and services to be consumed by the client._
-2.  **Stateless :** _A REST HTTP request consists of all the data needed by the server to understand and give back the response. Once a request is served, the server doesn't remember if the request has arrived after a while._
+2.  **Stateless :** _A REST HTTP request consists of all the data needed by the server to understand and give back the response. Once a request is served, the server doesn't remember if the request has arrived after a while._$$
 3.  **Cacheable :** Cache is a component that stores data so future requests for the data can be served faster. The database can be a potential tuning piece in a web application. In order to scale an application well, we need to cache content and deliver it as a response._
 4.  **Multiple layered system :** _The REST API can be served from multiple servers. One server can request the other, and so forth._
 5.  **Representation of resources :** _The REST API provides the uniform interface to talk to. It also has the advantage of requesting a specific data format as the response. The Internet Media Type (MIME type) can tell the server that the requested resource is of that particular type._
